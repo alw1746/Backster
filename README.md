@@ -1,5 +1,5 @@
 # Backster
-Simple customisable tool to backup data into a 7-Zip archive using Windows scheduled tasks.
+A simple customisable tool to backup data into a 7-Zip archive using Windows scheduled tasks.
 It is suitable for system administrators and programmers knowledgeable about Windows command line.
 
 Test data, scripts and tasks are provided in an example folder.
