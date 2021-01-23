@@ -18,7 +18,7 @@ Alert messages can be sent via a popup window or email if backup has a problem.
 Installation
 ------------
 Unzip backster zipfile into a folder eg. C:\SOE\
-Backster consists of the following folders:
+Backster consists of the following:
 
 7-ZipPortable     7-Zip archiving software
 doc               documentation
