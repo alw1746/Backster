@@ -127,3 +127,7 @@ Send a test email with the command:
 
 MailAlert -t
 
+Alerts are enabled by setting these variables in the backup scripts to 1 eg:
+
+    set EMAIL_ALERT=1
+    set MSG_ALERT=0
