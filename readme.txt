@@ -1,51 +1,127 @@
-7-Zip 19.00
------------
+Backster
+--------
+A simple customisable tool to backup data into a 7-Zip archive using Windows scheduled tasks.
+It is suitable for system administrators and programmers knowledgeable about Windows command line.
 
-7-Zip is a file archiver for Windows.
+Test data, scripts and tasks are provided in an example folder.
 
-7-Zip Copyright (C) 1999-2019 Igor Pavlov.
+Predefined backup types:
+  full    create new archive every backup.
+  mirror  update the archive to reflect disk content.
 
-The main features of 7-Zip: 
+Predefined schedules:
+  full daily, weekly, monthly.
+  Mirror every 10 mins, hourly.
 
-  - High compression ratio in the new 7z format
-  - Supported formats:
-     - Packing / unpacking: 7z, XZ, BZIP2, GZIP, TAR, ZIP and WIM.
-     - Unpacking only: AR, ARJ, CAB, CHM, CPIO, CramFS, DMG, EXT, FAT, GPT, HFS,
-                       IHEX, ISO, LZH, LZMA, MBR, MSI, NSIS, NTFS, QCOW2, RAR, 
-                       RPM, SquashFS, UDF, UEFI, VDI, VHD, VMDK, XAR and Z.
-  - Fast compression and decompression
-  - Self-extracting capability for 7z format
-  - Strong AES-256 encryption in 7z and ZIP formats
-  - Integration with Windows Shell
-  - Powerful File Manager
-  - Powerful command line version
-  - Localizations for 85 languages
+Installation
+------------
+-Unzip backster zipfile into a folder eg. C:\SOE\
+-Backster consists of the following folders:
 
+7-ZipPortable     7-Zip archiving software
+doc               documentation
+example           example scripts and tasks
+MailAlert         send email utility.
+MsgAlert          Popup and sound alert
+restore           folder for test restores
+save              folder for test backups
+test              folder for test data
 
-7-Zip is free software distributed under the GNU LGPL (except for unRar code).
-Read License.txt for more information about license.
+Files:
 
+7-Zip.cmd          7-Zip shortcut
+globals.cmd        global variable config for scripts
+readme.txt         this file
+TaskScheduler.cmd  Windows Task Scheduler shortcut
 
-  This distribution package contains the following files:
+Getting started
+---------------
+Example data and scripts provides the capability to test 
+the operations of the tool before performing actual backups.
 
-  7zFM.exe      - 7-Zip File Manager
-  7-zip.dll     - Plugin for Windows Shell
-  7-zip32.dll   - Plugin for Windows Shell (32-bit plugin for 64-bit system) 
-  7zg.exe       - GUI module
-  7z.exe        - Command line version
-  7z.dll        - 7-Zip engine module
-  7z.sfx        - SFX module (Windows version)
-  7zCon.sfx     - SFX module (Console version)
+Copy all example files to a working directory eg C:\tools\backups
+Edit setup.com and point the globals.cmd line to your backstr installation eg:
 
-  License.txt   - License information
-  readme.txt    - This file
-  History.txt   - History of 7-Zip
-  7-zip.chm     - User's Manual in HTML Help format
-  descript.ion  - Description for files
+call C:\SOE\Backster-1.0\globals.cmd
 
-  Lang\en.ttt   - English (base) localization file
-  Lang\*.txt    - Localization files
+Backup
+------
+To create a daily task to perform a full backup of the test data,
 
+Rightclick on sched_full_daily.cmd -> Run as administrator.
 
----
-End of document
+This will create a Windows scheduled task to run backup_full.cmd daily.
+The task will run every day at 18:00 by default and backup the
+test folder into save\test_full_daily_<weekday>.7z.
+A log is created as test_full_daily_<weekday>.log.
+
+To run the task immediately, run TaskScheduler.cmd,
+
+Click on Task Scheduler Library (left pane)
+Rightclick on Backup_full task (right pane) -> Run
+
+The backup_full task will run immediately and the archive created in the save folder.
+
+Restore
+-------
+run 7-Zip.cmd,
+
+Navigate to save folder
+Click on test_full_daily_<weekday>.7z
+Click the Extract icon and set:
+  Extract to: C:\SOE\Backster-1.0\restore
+  Path mode: Full pathnames
+  Overwrite mode: Overwrite without prompt
+Click Ok
+
+The test data will be restored to C:\SOE\Backster-1.0\restore\
+
+Customisation
+-------------
+Example: full backup of D:\Word Files\*.docx into E:\archive\Word\ every day at 8:30pm.
+
+Edit backup_full.cmd and change the lines to suit your setup:
+
+set backup_from=D:\Word Files\*.docx
+set to_zipfile=E:\archive\Word\Word_full_daily_%suffix%.7z
+
+Edit sched_full_daily.cmd and change the start time to:
+
+/st 20:30
+
+Rightclick on sched_full_daily.cmd -> Run as administrator.
+Enter Y to replace the existing task.
+
+Perform an immediate run to check E:\archive\Word\Word_full_daily_<weekday>.7z exists.
+Perform a restore to a temp folder to verify the files are available.
+
+Alert notification
+------------------
+Alert messages can be sent using MailAlert in the event of a failure. The example below shows how to
+configure a gmail address.
+
+Edit MailAlert.ini,
+
+[CONFIGURATION]
+To=gmail_user@gmail.com        <== gmail address of receiver
+From=gmail_user@gmail.com      <== gmail address of receiver
+;ReplyTo=manager@example.org
+;Cc=admin2@example.org,admin3@example.org
+;Bcc=boss@example.org
+FullName=Backster Alerts       <== informational
+SMTPServer=smtp.gmail.com
+SMTPPort=587
+Username=gmail_user@gmail.com  <== google login username
+EnableAutoTLS=yes
+EnableSMTPS=no
+Importance=High
+PlaintextOnly=no
+VerboseMode=no
+Charset=ISO-8859-1
+AlternativeSpaceEncoding=yes
+Password=gmail_user_password   <== google login password
+
+Send a test email with the command:
+
+MailAlert -t
+
