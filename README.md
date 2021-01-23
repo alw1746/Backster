@@ -106,7 +106,7 @@ Edit MailAlert.ini,
 
     [CONFIGURATION]  
     To=gmail_user@gmail.com        <== gmail address of receiver  
-    From=gmail_user@gmail.com      <== gmail address of receiver  
+    From=gmail_user@gmail.com      <== gmail address of sender  
     ;ReplyTo=manager@example.org  
     ;Cc=admin2@example.org,admin3@example.org  
     ;Bcc=boss@example.org  
