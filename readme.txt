@@ -41,7 +41,9 @@ Getting started
 Example data and scripts provides the capability to test 
 the operations of the tool before performing actual backups.
 
-Copy all example files to a working directory eg C:\tools\backups
+Copy all example files to a working directory eg C:\tools\backups or just
+use the files in the example folder directly.  
+
 Edit setup.com and point the globals.cmd line to your backstr installation eg:
 
 call C:\SOE\Backster-1.0\globals.cmd
