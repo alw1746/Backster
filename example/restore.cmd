@@ -8,7 +8,7 @@ call setup.cmd
 set startTime=%time%
 set status=1
 set EMAIL_ALERT=0
-set MSG_ALERT=1
+set MSG_ALERT=0
 
 if [%1] == [] (
   echo No archive filename specified.
@@ -36,7 +36,7 @@ echo RESTORE STATUS: %status% (0=pass,1=fail) >> "%logfile%"
 echo Start : %startTime% >> "%logfile%"
 echo Finish: %time% >> "%logfile%"
 set alertmsg=Restore %infile% completed, status: %status%
-if %status% EQU 0 (
+if %status% EQU 1 (
   if %EMAIL_ALERT% EQU 1 "%BCKSTR_HOME%\MailAlert\MailAlert.exe" -s "%alertmsg%" -b "%alertmsg%" -d  >> "%logfile%"
   if %MSG_ALERT% EQU 1 "%BCKSTR_HOME%\MsgAlert\Popup.cmd" "%alertmsg%"  >> "%logfile%"
 )

@@ -5,6 +5,6 @@
 ::Note: must rightclick -> Run as admin to create the task.
 pushd "%~dp0"
 setlocal
-schtasks /create /tn "Backup_full_monthly" /sc MONTHLY /D 21 /st 14:45  /tr "'%cd%\backup_full.cmd' MONTHLY" /RU SYSTEM /np
+schtasks /create /tn "Backup_full_monthly" /sc MONTHLY /D 10 /st 18:00  /tr "'%cd%\backup_full.cmd' MONTHLY" /RU SYSTEM /np
 popd
 timeout /t 10

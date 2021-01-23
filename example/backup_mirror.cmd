@@ -9,7 +9,7 @@ call setup.cmd
 set startTime=%time%
 set status=1
 set EMAIL_ALERT=0
-set MSG_ALERT=1
+set MSG_ALERT=0
 
 IF EXIST backup_mirror_error.log DEL /F backup_mirror_error.log
 
@@ -28,7 +28,7 @@ echo BACKUP STATUS: %status% (0=pass,1=fail) >> "%logfile%"
 echo Start : %startTime% >> "%logfile%"
 echo Finish: %time% >> "%logfile%"
 set alertmsg=Archive test_mirror.7z completed, status: %status%
-if %status% EQU 0 (
+if %status% EQU 1 (
   if %EMAIL_ALERT% EQU 1 "%BCKSTR_HOME%\MailAlert\MailAlert.exe" -s "%alertmsg%" -b "%alertmsg%" -d  >> "%logfile%"
   if %MSG_ALERT% EQU 1 "%BCKSTR_HOME%\MsgAlert\Popup.cmd" "%alertmsg%" >> "%logfile%"
 )

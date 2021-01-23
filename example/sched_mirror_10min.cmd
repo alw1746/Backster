@@ -5,6 +5,6 @@
 ::Note: must rightclick -> Run as admin to create the task.
 pushd "%~dp0"
 setlocal
-schtasks /create /tn "Backup_mirror_10min" /sc DAILY /st 15:15 /ri 10 /du 24:00 /tr "'%cd%\backup_mirror.cmd'" /RU SYSTEM /np
+schtasks /create /tn "Backup_mirror_10min" /sc DAILY /st 0:0 /ri 10 /du 24:00 /tr "'%cd%\backup_mirror.cmd'" /RU SYSTEM /np
 popd
 timeout /t 10
