@@ -50,7 +50,7 @@ Backup
 ------
 To create a daily task to perform a full backup of the test data,  
 
-  Rightclick on sched_full_daily.cmd -> Run as administrator.
+    Rightclick on sched_full_daily.cmd -> Run as administrator.
 
 This will create a Windows scheduled task to run backup_full.cmd daily.
 The task will run every day at 18:00 by default and backup the
