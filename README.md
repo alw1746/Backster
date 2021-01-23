@@ -4,9 +4,10 @@ It is suitable for system administrators and programmers knowledgeable about Win
 
 Test data, scripts and tasks are provided in an example folder.
 
-Predefined backup types:  
-- full      create new archive every backup.  
-- mirror    update the archive to reflect disk content.  
+Predefined backup types:
+
+- full  :  create new archive every backup.  
+- mirror :  update the archive to reflect disk content.  
 
 Predefined schedules:  
 - full daily, weekly, monthly.  
