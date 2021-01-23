@@ -1,8 +1,8 @@
 # Backster
 A simple customisable tool to backup data into a 7-Zip archive using Windows scheduled tasks.
-It is suitable for system administrators and programmers knowledgeable about Windows command line.
+It is designed for system administrators and programmers knowledgeable about using Windows command line.
 
-Test data, scripts and tasks are provided in an example folder.
+Test data, scripts and tasks are provided for trialling the system.
 
 Predefined backup types:
 
@@ -12,6 +12,8 @@ Predefined backup types:
 Predefined schedules:  
 - full daily, weekly, monthly.  
 - Mirror every 10 mins, hourly.  
+
+Alert messages can be sent via a popup window or email if backup has a problem.
 
 Installation
 ------------
