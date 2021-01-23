@@ -58,8 +58,8 @@ A log is created as test_full_daily_<weekday>.log.
 
 To run the task immediately, run TaskScheduler.cmd,
 
-  Click on Task Scheduler Library (left pane)  
-  Rightclick on Backup_full task (right pane) -> Run
+    Click on Task Scheduler Library (left pane)  
+    Rightclick on Backup_full task (right pane) -> Run
 
 The backup_full task will run immediately and the archive created in the save folder.
 
@@ -67,13 +67,13 @@ Restore
 -------
 run 7-Zip.cmd,
 
-  Navigate to save folder  
-  Click on test_full_daily_<weekday>.7z  
-  Click the Extract icon and set:  
-  - Extract to: C:\SOE\Backster-1.0\restore  
-  - Path mode: Full pathnames  
-  - Overwrite mode: Overwrite without prompt  
-  Click Ok
+    Navigate to save folder  
+    Click on test_full_daily_<weekday>.7z  
+    Click the Extract icon and set:  
+    - Extract to: C:\SOE\Backster-1.0\restore  
+    - Path mode: Full pathnames  
+    - Overwrite mode: Overwrite without prompt  
+    Click Ok
 
 The test data will be restored to C:\SOE\Backster-1.0\restore\
 
@@ -83,12 +83,12 @@ Example: full backup of D:\Word Files\*.docx into E:\archive\Word\ every day at 
 
 Edit backup_full.cmd and change the lines to suit your setup:
 
-  set backup_from=D:\Word Files\*.docx  
-  set to_zipfile=E:\archive\Word\Word_full_daily_%suffix%.7z
+    set backup_from=D:\Word Files\*.docx  
+    set to_zipfile=E:\archive\Word\Word_full_daily_%suffix%.7z
 
 Edit sched_full_daily.cmd and change the start time to:
 
-  /st 20:30
+    /st 20:30
 
 Rightclick on sched_full_daily.cmd -> Run as administrator.  
 Enter Y to replace the existing task.
@@ -103,26 +103,26 @@ configure a gmail address.
 
 Edit MailAlert.ini,
 
-  [CONFIGURATION]  
-  To=gmail_user@gmail.com        <== gmail address of receiver  
-  From=gmail_user@gmail.com      <== gmail address of receiver  
-  ;ReplyTo=manager@example.org  
-  ;Cc=admin2@example.org,admin3@example.org  
-  ;Bcc=boss@example.org  
-  FullName=Backster Alerts       <== informational  
-  SMTPServer=smtp.gmail.com  
-  SMTPPort=587  
-  Username=gmail_user@gmail.com  <== google login username  
-  EnableAutoTLS=yes  
-  EnableSMTPS=no  
-  Importance=High  
-  PlaintextOnly=no  
-  VerboseMode=no  
-  Charset=ISO-8859-1  
-  AlternativeSpaceEncoding=yes  
-  Password=gmail_user_password   <== google login password
+    [CONFIGURATION]  
+    To=gmail_user@gmail.com        <== gmail address of receiver  
+    From=gmail_user@gmail.com      <== gmail address of receiver  
+    ;ReplyTo=manager@example.org  
+    ;Cc=admin2@example.org,admin3@example.org  
+    ;Bcc=boss@example.org  
+    FullName=Backster Alerts       <== informational  
+    SMTPServer=smtp.gmail.com  
+    SMTPPort=587  
+    Username=gmail_user@gmail.com  <== google login username  
+    EnableAutoTLS=yes  
+    EnableSMTPS=no  
+    Importance=High  
+    PlaintextOnly=no  
+    VerboseMode=no  
+    Charset=ISO-8859-1  
+    AlternativeSpaceEncoding=yes  
+    Password=gmail_user_password   <== google login password
 
 Send a test email with the command:
 
-  MailAlert -t
+    MailAlert -t
 
